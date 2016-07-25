@@ -1,0 +1,10 @@
+# Lamp Color
+- alias: 'Lamp Color'
+  trigger:
+   - platform: state
+     entity_id: 
+      - input_slider.lamp_red
+      - input_slider.lamp_green
+      - input_slider.lamp_blue
+  action:
+    service: shell_command.change_bulb_color
