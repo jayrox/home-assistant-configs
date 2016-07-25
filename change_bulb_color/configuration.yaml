@@ -1,0 +1,9 @@
+# Automation
+automation: !include automation.yaml
+
+# Input Sliders
+input_slider: !include input_slider.yaml
+
+# Shell Commands
+shell_command:
+  change_bulb_color: '/path/to/rgb_color.sh http://HOST_ADDRESS 8123 HASS_PASSWORD LIGHT_ENTITY_ID {{states.input_slider.lamp_red.state}} {{states.input_slider.lamp_green.state}} {{states.input_slider.lamp_blue.state}} {{states.input_slider.lamp_brightness.state}}'
