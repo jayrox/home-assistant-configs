@@ -1,0 +1,27 @@
+lamp_brightness:
+  name: Lamp Brightness
+  min: 0
+  max: 255
+  initial: 255
+  step: 1
+
+lamp_red:
+  name: Lamp Red
+  min: 0
+  max: 255
+  initial: 255
+  step: 1
+
+lamp_green:
+  name: Lamp Green
+  min: 0
+  max: 255
+  initial: 255
+  step: 1
+
+lamp_blue:
+  name: Lamp Blue
+  min: 0
+  max: 255
+  initial: 255
+  step: 1
