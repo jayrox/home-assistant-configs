@@ -18,3 +18,6 @@ cmake -DRPI_INCLUDE_DIR=/opt/vc/include -DRPI_LIB_DIR=/opt/vc/lib ..
 make -j4  
 sudo make install  
 sudo ldconfig  
+
+# Install cec-web
+https://github.com/robbiet480/cec-web
