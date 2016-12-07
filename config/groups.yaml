@@ -163,8 +163,6 @@ ae_laundry_room:
   name: Laundry Room
   entities:
    - light.b_wr_1
-   - input_slider.laundry_room_brightness
-
 
 ##########################################
 # Household
