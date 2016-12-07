@@ -1,0 +1,144 @@
+homeassistant:
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  
+  # C for Celsius, F for Fahrenheit
+  unit_system: imperial
+
+  # Pick yours from here: 
+  #http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Kentucky/Louisville
+
+  # Name of the location where Home Assistant is running
+  name: Home
+
+  # Customize component settings
+  customize: !include customize.yaml
+
+# Zone settings
+zone:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  radius: 200
+  icon: mdi:account-multiple
+
+# Enables the frontend
+frontend:
+panel_iframe:
+  router:
+    title: 'Router'
+    icon: 'mdi:router-wireless'
+    url: 'http://192.168.200.1/'
+
+# Checks for available updates
+updater:
+
+# Allows homeassistant to pretend to be a Hue
+# Enables Amazon Echo voice commands
+emulated_hue:
+
+# Discover some devices automatically
+discovery:
+
+# View all events in a logbook
+logbook:
+
+logger:
+  default: !secret logger_level
+  logs:
+    homeassistant: info
+    homeassistant.core: error
+    homeassistant.components.api: error
+    homeassistant.components.emulated_hue: info
+    homeassistant.components.recorder: error
+    homeassistant.components.device_tracker.nmap_tracker: error
+    homeassistant.components.statsd: error
+    homeassistant.components.mqtt: error
+    homeassistant.components.zwave: error
+    homeassistant.components.sensor.command_line: error
+    homeassistant.components.sensor.google_travel_time: error
+    plexapi: error
+
+# Enables support for tracking state changes over time.
+history:
+
+# Track the sun
+sun:
+
+# HTTP settings
+http:
+  api_password: !secret http_api_password
+  server_port: 8123
+  ssl_certificate: !secret http_ssl_cert
+  ssl_key: !secret http_ssl_key
+
+# MQTT settings
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  keepalive: 60
+  client_id: hass
+  username: hass
+  password: !secret mqtt_hass
+
+# IFTTT settings
+ifttt:
+  key: !secret ifttt_key
+
+# Lights
+light:
+  - platform: osramlightify
+    host: 192.168.200.123
+  - platform: hue
+    host: 192.168.200.87
+    allow_unreachable: true
+    filename: phue.conf
+  - platform: lifx
+
+# Media Players
+media_player plex:
+  platform: plex
+
+media_player livingroom:
+  platform: cast
+  host: 192.168.200.31
+
+media_player emby:
+  platform: emby
+  host: 192.168.200.79
+  api_key: !secret emby_api_key
+
+media_player parents_tv:
+  platform: samsungtv
+  host: 192.168.200.227
+
+media_player fire_stick:
+  platform: firetv
+
+# Ecobee
+ecobee:
+  api_key: !secret ecobee
+
+# Wink
+wink:
+  access_token: !secret wink_access_token
+
+# Includes
+automation: !include automation.yaml
+device_tracker: !include device_tracker.yaml
+group: !include groups.yaml
+input_boolean: !include input_boolean.yaml
+input_select: !include input_select.yaml
+input_slider: !include input_slider.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
+
+# Shell Commands
+shell_command:
+  change_bulb_color: '/home/homeassistant/.homeassistant/rgb_color.sh https://192.168.200.25 8123 HA2016 light.a19_rgbw_60_01 {{states.input_slider.parents_lamp_red.state | int}} {{states.input_slider.parents_lamp_green.state | int}} {{states.input_slider.parents_lamp_blue.state | int}} {{states.input_slider.parents_room_brightness.state | int}}'
+#  change_pb_candle_1_color: '/home/homeassistant/.homeassistant/rgb_color_ble.sh 6B:D3:4B:0B:AC:E6 set {{states.input_slider.pb_candle_1_red.state}} {{states.input_slider.pb_candle_1_green.state}} {{states.input_slider.pb_candle_1_blue.state}}'

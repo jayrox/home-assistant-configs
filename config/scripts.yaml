@@ -1,0 +1,49 @@
+# Front Porch
+timed_porch:
+  alias: "Turn on porch lamp and set timer"
+  sequence:
+    # Cancel ev. old timers
+    - service: script.turn_off
+      data:
+        entity_id: script.timer_porch_off
+    - service: light.turn_on
+      data:
+        entity_id: light.u_fp_1
+    # Set new timer
+    - service: script.turn_on
+      data:
+        entity_id: script.timer_porch_off
+
+timer_porch_off:
+  alias: "Turn off porch lamp after 15 minutes"
+  sequence:
+    - delay:
+        minutes: 15
+    - service: light.turn_off
+      data:
+        entity_id: light.u_fp_1
+
+# Parents Bedroom Lamp
+timed_parents_lamp:
+  alias: "Turn on parents lamp and set timer"
+  sequence:
+    # Cancel ev. old timers
+    - service: script.turn_off
+      data:
+        entity_id: script.timer_parents_off
+    - service: light.turn_on
+      data:
+        entity_id: light.a19_rgbw_60_01
+    # Set new timer
+    - service: script.turn_on
+      data:
+        entity_id: script.timer_parents_off
+
+timer_parents_off:
+  alias: "Turn off parent's lamp after 15 minutes"
+  sequence:
+    - delay:
+        minutes: 15
+    - service: light.turn_off
+      data:
+        entity_id: light.a19_rgbw_60_01

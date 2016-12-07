@@ -1,0 +1,206 @@
+# Turn on Front Porch Lamp Light after dark but before midnight
+# When a member of the household arrives home.
+- alias: 'Home Late'
+  trigger:
+   - platform: state
+     entity_id: group.household
+     state: 'home'
+  condition:
+    condition: and
+    conditions:
+     - condition: sun
+       after: sunset
+     - condition: time
+       before: '23:59'
+  action:
+    service: homeassistant.turn_on
+    entity_id: script.timed_porch
+
+# Porch Lamp Brightness
+- alias: 'Porch Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.porch_brightness
+  action:
+    service: light.turn_on
+    entity_id: light.u_fp_1
+    data_template:
+      brightness: '{{ states.input_slider.porch_brightness.state }}'
+
+# Living Room Lamp Brightness
+- alias: 'Living Room Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.living_room_lamp_brightness
+  action:
+    service: light.turn_on
+    entity_id: light.u_lr_1
+    data_template:
+      brightness: '{{ states.input_slider.living_room_lamp_brightness.state }}'
+
+# Kitchen Lamp Brightness
+- alias: 'Kitchen Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.kitchen_brightness
+  action:
+    service: light.turn_on
+    entity_id: light.u_k_1
+    data_template:
+      brightness: '{{ states.input_slider.kitchen_brightness.state }}'
+
+# Kids Room Lamp Brightness
+- alias: 'Kids Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.kids_lamp_brightness
+  action:
+    service: light.turn_on
+    entity_id:
+     - light.u_krc_1
+     - light.u_krc_2
+    data_template:
+      brightness: '{{ states.input_slider.kids_lamp_brightness.state }}'
+
+# Parent's Room Lamp Brightness
+- alias: 'Parents Room Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.parents_room_brightness
+  action:
+    service: light.turn_on
+    entity_id: light.a19_rgbw_60_01
+    data_template:
+      brightness: '{{ states.input_slider.parents_room_brightness.state }}'
+
+# Parent's Room Lamp Color
+- alias: 'Parents Room Color'
+  trigger:
+   - platform: state
+     entity_id: 
+      - input_slider.parents_lamp_red
+      - input_slider.parents_lamp_green
+      - input_slider.parents_lamp_blue
+  action:
+    service: shell_command.change_bulb_color
+
+# Basement Living Room Lamp Brightness
+- alias: 'Basement Living Room Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.basement_living_room_lamp_brightness
+  action:
+    service: light.turn_on
+    entity_id: 
+     - light.b_lr_1
+     - light.b_lr_2
+    data_template:
+      brightness: '{{ states.input_slider.living_room_lamp_brightness.state }}'
+
+# Laundry Room Lamp Brightness
+- alias: 'Laundry Room Brightness'
+  trigger:
+   - platform: state
+     entity_id: input_slider.laundry_room_lamp_brightness
+  action:
+    service: light.turn_on
+    entity_id: light.b_wr_1
+    data_template:
+      brightness: '{{ states.input_slider.laundry_room_lamp_brightness.state }}'
+
+# Fade on the bedroom light at 6:55 am
+- alias: Wake Up
+  trigger:
+    platform: time
+    after: '06:55:00'
+  action:
+    service: scene.turn_on
+    data:
+      entity_id: scene.morning_bedroom
+
+# HASS has an update
+- alias: "Update_Update"
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    service: ifttt.trigger
+    data: {"event":"hassnotification_jay","value1":"HASS has an update."}
+
+
+# Playbulb Candle Color
+- alias: 'Playbulb Candle Color'
+  trigger:
+   - platform: state
+     entity_id: 
+      - input_slider.pb_candle_1_red
+      - input_slider.pb_candle_1_green
+      - input_slider.pb_candle_1_blue
+  action:
+    service: shell_command.change_pb_candle_1_color
+
+##########################################################
+## Vacation Mode
+##########################################################
+
+# Turn on vacation mode lights
+- alias: Vacation Mode
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      from: 'above_horizon'
+      to: 'below_horizon'
+  condition:
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'on'
+  action:
+    service: scene.turn_on
+    entity_id: scene.vacation
+
+# Turn of vacation mode lights
+- alias: Vacation Mode Lights Off
+  trigger:
+    - platform: time
+      after: '01:12'
+  condition:
+    - condition: state
+      entity_id: input_boolean.vacation_mode
+      state: 'on'
+  action:
+   service: light.turn_off
+   entity_id: 
+    - light.u_fp_1
+    - light.u_lr_1
+
+
+#############################
+- alias: Motion 1 On
+  trigger:
+    platform: mqtt
+    topic: sensor/motion1
+    payload: 'controlOn'
+  action:
+   service: light.turn_on
+   entity_id: 
+    - light.u_k_1
+
+- alias: Motion 1 Off
+  trigger:
+    platform: mqtt
+    topic: sensor/motion1
+    payload: 'controlOff'
+  action:
+   service: light.turn_off
+   entity_id: 
+    - light.u_k_1
+
+- alias: Button 1 Toggle
+  trigger:
+    platform: mqtt
+    topic: sensor/button1
+    payload: 'controlOn'
+  action:
+   service: light.toggle
+   entity_id: 
+    - light.u_k_1

@@ -1,0 +1,121 @@
+- platform: forecast
+  api_key: !secret forecast_api_key
+  monitored_conditions:
+    - summary
+    - icon
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+    - apparent_temperature
+    - dew_point
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    - visibility
+    - ozone
+    - minutely_summary
+    - hourly_summary
+    - daily_summary
+
+# Time and Date
+- platform: time_date
+  display_options:
+   - 'time'
+   - 'date'
+
+# Speedtest
+- platform: speedtest
+  minute: 30
+  hour:
+   - 0
+   - 3
+   - 6
+   - 9
+   - 12
+   - 15
+   - 18
+   - 21
+  monitored_conditions:
+   #- ping
+   - download
+   - upload     
+
+# Xbox Wired and Wifi status
+- platform: template
+  sensors:
+    xboxone_wired:
+      friendly_name: 'Xbox One Wired'
+      value_template: >-
+        {%- if is_state("device_tracker.xboxone_wired", "home") %}
+          Online
+        {% else %}
+          Offline
+        {%- endif %}
+    xboxone_wifi:
+      friendly_name: 'Xbox One Wifi'
+      value_template: >-
+        {%- if is_state("device_tracker.xboxone_wifi", "home") %}
+          Online
+        {% else %}
+          Offline
+        {%- endif %}
+    ps4_wired:
+      friendly_name: 'PS4 Wired'
+      value_template: >-
+        {%- if is_state("device_tracker.ps4_wired", "home") %}
+          Online
+        {% else %}
+          Offline
+        {%- endif %}
+
+- platform: pi_hole
+  host: 192.168.200.24
+
+- platform: haveibeenpwned
+  email: 
+    - !secret jay_email
+    - !secret katie_email_1
+    - !secret katie_email_2
+
+# Find - Jay
+#- platform: rest
+#  resource: http://pl3xpro:8003/location?group=messymandrill&user=jay
+#  value_template: '{{ value_json.users.jay[0].location }}'
+#  method: GET
+#  name: Jay Location
+#  scan_interval: 5
+
+#  Monitor his and hers morning and evening commute times.
+#  Useful for automations and notifications.
+
+#- platform: google_travel_time
+#  name: His Morning
+#  api_key: !secret google_travel_api
+#  origin: !secret home_address
+#  destination: !secret his_work_address
+#  options:
+#    mode: driving
+#- platform: google_travel_time
+#  name: His Evening
+#  api_key: !secret google_travel_api
+#  origin: !secret his_work_address
+#  destination: !secret home_address
+#  options:
+#    mode: driving
+
+#- platform: fitbit
+#  name: Jay Fitbit
+#  monitored_resources:
+#    - "body/weight"
+#    - "activities/steps"
+#    - "activities/tracker/calories"
+#    - "activities/tracker/distance"
+#    - "activities/tracker/floors"
+#    - "body/bmi"
+#    - "body/fat"
+#    - "body/weight"

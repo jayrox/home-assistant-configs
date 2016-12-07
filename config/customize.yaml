@@ -1,0 +1,182 @@
+#  Hidden scenes.
+scene.morning_bedroom:
+  hidden: true
+
+# Commute
+sensor.his_morning:
+  friendly_name: Morning
+  icon: mdi:car
+sensor.his_evening:
+  friendly_name: Evening
+  icon: mdi:car
+
+# Lights
+light.a19_rgbw_60_01:
+  friendly_name: Fan Lamp
+  emulated_hue: false
+
+light.u_lr_1:
+  friendly_name: Living Room Lamp
+  emulated_hue: false
+
+light.u_k_1:
+  friendly_name: Kitchen
+  emulated_hue: false
+
+light.u_fp_1:
+  friendly_name: Front Porch
+  emulated_hue: false
+
+light.u_krc_1:
+  friendly_name: Kids Room Ceiling 1
+  emulated_hue: false
+
+light.u_krc_2:
+  friendly_name: Kids Room Ceiling 2
+  emulated_hue: false
+
+light.u_c_1:
+  friendly_name: Walkin Closet Ceiling
+  emulated_hue: false
+
+light.u_sw_1:
+  friendly_name: Stairwell
+  emulated_hue: false
+
+light.b_lr_1:
+  friendly_name: Basement Living Room 1
+  emulated_hue: false
+
+light.b_lr_2:
+  friendly_name: Basement Living Room 2
+  emulated_hue: false
+
+light.b_wr_1:
+  friendly_name: Laundry Room
+  emulated_hue: false
+
+light.lamp:
+  emulated_hue: false
+
+
+#light.unnamed_device:
+#  friendly_name: WHOAMI
+#  emulated_hue: false
+
+
+# Sliders
+input_slider.parents_lamp_brightness:
+  friendly_name: Brightness
+
+input_slider.parents_lamp_red:
+  friendly_name: Red
+
+input_slider.parents_lamp_green:
+  friendly_name: Green
+
+input_slider.parents_lamp_blue:
+  friendly_name: Blue
+
+# Boolean
+input_boolean.vacation_mode:
+  emulated_hue: false
+
+input_boolean.parents_tv_power:
+  emulated_hue: false
+
+# Devices
+device_tracker.jay_jay:
+  hidden: true
+
+# Media Players
+media_player.galaxy_s7_edge:
+  emulated_hue: false
+
+media_player.living_room:
+  friendly_name: Living Room Chromecast
+  emulated_hue: false
+
+media_player.plex_web_chrome:
+  emulated_hue: false
+
+media_player.plex_web_chrome_2:
+  emulated_hue: false
+
+# Groups
+group.person_jay:
+  hidden: true
+  emulated_hue: false
+
+group.person_jay_presence:
+  hidden: true
+  emulated_hue: false
+
+group.person_jay_devices:
+  hidden: true
+  emulated_hue: false
+
+group.commute_jay:
+  emulated_hue: false
+
+group.person_katie:
+  hidden: true
+  emulated_hue: false
+
+group.all_automations:
+  emulated_hue: false
+
+group.all_devices:
+  emulated_hue: false
+
+group.all_lights:
+  friendly_name: All Lights
+  emulated_hue: true
+
+group.all_scripts:
+  emulated_hue: false
+
+group.all_switches:
+  emulated_hue: false
+
+group.parents_room_tv:
+  emulated_hue: false
+
+# Rooms
+group.front_porch:
+  emulated_hue: false
+
+group.living_room:
+  emulated_hue: false
+
+group.kitchen:
+  emulated_hue: false
+
+group.kids_room:
+  emulated_hue: false
+
+group.parents_room:
+  emulated_hue: false
+
+group.stairwell:
+  emulated_hue: false
+
+group.walkin_closet:
+  emulated_hue: false
+
+group.basement_living_room:
+  emulated_hue: false
+
+group.laundry_room:
+  emulated_hue: false
+
+#group.laundry_room:
+#  emulated_hue: false
+
+
+# Sensors
+sensor.xboxone_wired:
+  entity_picture: /local/xbox-live.png
+sensor.xboxone_wifi:
+  entity_picture: /local/xbox-live.png
+sensor.ps4_wired:
+  entity_picture: /local/ps4.png

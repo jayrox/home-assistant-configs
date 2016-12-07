@@ -1,0 +1,285 @@
+# Rooms
+rooms:
+  name: Rooms
+  view: yes
+  icon: mdi:home-variant
+  entities:
+   - group.front_porch
+   - group.living_room
+   - group.kitchen
+   - group.kids_room
+   - group.parents_room
+   - group.basement_living_room
+   - group.laundry_room
+   - group.walkin_closet
+   - group.stairwell
+
+##########################################
+# First Floor
+##########################################
+# Front Porch
+front_porch:
+  name: Front Porch
+  entities:
+   - light.u_fp_1
+   - input_slider.porch_brightness
+
+# Upstairs Living Room
+living_room:
+  name: Living Room
+  entities:
+   - light.u_lr_1
+   - input_slider.living_room_lamp_brightness
+   - media_player.living_room
+
+# Upstairs Kitchen
+kitchen:
+  name: Kitchen
+  entities:
+   - light.u_k_1
+   - input_slider.kitchen_brightness
+
+# Kids Room
+kids_room:
+  name: Kids Room
+  entities:
+   - light.u_krc_1
+   - light.u_krc_2
+   - input_slider.kids_room_brightness
+
+# Parents Room
+parents_room:
+  name: Parents Room
+  entities:
+   - light.a19_rgbw_60_01
+   - input_slider.parents_room_brightness
+   - input_slider.parents_lamp_red
+   - input_slider.parents_lamp_green
+   - input_slider.parents_lamp_blue
+   - binary_sensor.lilbee_occupancy
+   - sensor.xboxone_wired
+   - sensor.xboxone_wifi
+   - sensor.ps4_wired
+   - group.parents_room_tv
+
+# Parents Room TV Control
+parents_room_tv:
+  name: Parents Room TV
+  entities:
+    - input_boolean.parents_tv_power
+    - input_slider.parents_tv_volume
+    - input_select.parents_tv_input
+
+# Walkin Closet
+walkin_closet:
+  name: Walkin Closet
+  entities:
+    - light.u_c_1
+
+# Stairwell
+stairwell:
+  name: Stairwell
+  entities:
+    - light.u_sw_1
+
+##########################################
+# Basement
+##########################################
+# Basement Living Room
+basement_living_room:
+  name: Basement Living Room
+  entities:
+   - light.b_lr_1
+   - light.b_lr_2
+   - input_slider.basement_living_room_lamp_brightness
+
+# Laundry Room
+laundry_room:
+  name: Laundry Room
+  entities:
+   - light.b_wr_1
+#   - input_slider.laundry_room_brightness
+
+##########################################
+# Amazon Echo Voice Control
+##########################################
+##########################################
+# First Floor
+##########################################
+# Front Porch
+ae_front_porch:
+  name: Front Porch
+  entities:
+   - light.u_fp_1
+
+# Upstairs Living Room
+ae_living_room:
+  name: Living Room
+  entities:
+   - light.u_lr_1
+
+# Upstairs Kitchen
+ae_kitchen:
+  name: Kitchen
+  entities:
+   - light.u_k_1
+
+# Kids Room
+ae_kids_room:
+  name: Kids Room
+  entities:
+   - light.u_krc_1
+   - light.u_krc_2
+
+# Parents Room
+ae_parents_room:
+  name: Parents Room
+  entities:
+   - light.a19_rgbw_60_01
+
+# Walkin Closet
+ae_walkin_closet:
+  name: Walkin Closet
+  entities:
+    - light.u_c_1
+
+# Stairwell
+ae_stairwell:
+  name: Stairwell
+  entities:
+    - light.u_sw_1
+
+##########################################
+# Basement
+##########################################
+# Basement Living Room
+ae_basement_living_room:
+  name: Basement Living Room
+  entities:
+   - light.b_lr_1
+   - light.b_lr_2
+
+ae_laundry_room:
+  name: Laundry Room
+  entities:
+   - light.b_wr_1
+   - input_slider.laundry_room_brightness
+
+
+##########################################
+# Household
+##########################################
+household:
+  name: Household
+  view: yes
+  icon: mdi:human-male-female
+  entities:
+   - group.person_jay
+   - group.person_katie
+
+##########################################
+# People
+##########################################
+# Jay
+person_jay:
+  name: Jay
+  icon: mdi:human-male
+  entities:
+   - group.person_jay_presence
+   - group.person_jay_devices
+   - group.commute_jay
+
+person_jay_presence:
+  view: no
+  entities:
+   - device_tracker.jay_s7_bt
+   - device_tracker.jay_s7_wifi
+
+person_jay_devices:
+  entities:
+   - sensor.his_morning
+   - sensor.his_evening
+   - sensor.jay_fitbit_steps
+   - sensor.jay_fitbit_fellasleepat
+   - sensor.jay_fitbit_awokeat
+   - sensor.jay_fitbit_bmi
+   - sensor.jay_fitbit_weight
+
+# Katie
+person_katie:
+  name: Katie
+  icon: mdi:human-female
+  entities:
+   - device_tracker.katie_s7_wifi
+
+##########################################
+# Media
+##########################################
+media:
+  name: Media
+  view: yes
+  icon: mdi:movie
+  entities:
+   - media_player.living_room
+   - media_player.plex_web_chrome
+
+##########################################
+# Infrastructure Devices
+##########################################
+device_infrastructure:
+  name: Infrastructure
+  view: yes
+  icon: mdi:access-point-network
+  entities:
+   - device_tracker.zyxel_gateway_wan
+   - device_tracker.zyxel_gateway_lan
+   - device_tracker.zyxel_gateway_wlan
+   - device_tracker.onhub_lan
+   - device_tracker.onhub
+   - device_tracker.tplink_gi_24p_poe
+   - device_tracker.pi_hole
+   - device_tracker.amazon_echo
+   - device_tracker.philipshue
+   - device_tracker.lightify
+   - device_tracker.pl3xpro
+
+##########################################
+# Commute
+##########################################
+# Jay
+commute_jay:
+  name: Jay Commute
+  icon: mdi:car
+  entities:
+   - sensor.his_morning
+   - sensor.his_evening
+
+##########################################
+# Weather
+##########################################
+# Forcast.io
+weather_forcastio:
+  name: weather
+  view: yes
+  icon: mdi:weather-sunny
+  entities:
+   - sensor.forecastio_apparent_temperature
+   - sensor.forecastio_cloud_coverage
+   - sensor.forecastio_daily_summary
+   - sensor.forecastio_dew_point
+   - sensor.forecastio_hourly_summary
+   - sensor.forecastio_humidity
+   - sensor.forecastio_icon
+   - sensor.forecastio_minutely_summary
+   - sensor.forecastio_nearest_storm_bearing
+   - sensor.forecastio_nearest_storm_distance
+   - sensor.forecastio_ozone
+   - sensor.forecastio_precip
+   - sensor.forecastio_precip_intensity
+   - sensor.forecastio_precip_probability
+   - sensor.forecastio_pressure
+   - sensor.forecastio_summary
+   - sensor.forecastio_temperature
+   - sensor.forecastio_visibility
+   - sensor.forecastio_wind_bearing
+   - sensor.forecastio_wind_speed

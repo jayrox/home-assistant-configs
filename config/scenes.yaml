@@ -1,0 +1,74 @@
+#  Turn off all the lights.
+- name: All Lights Off
+  entities:
+    light.u_fp_1: off
+    light.u_lr_1: off
+    light.u_k_1: off
+    light.u_krc_1: off
+    light.u_krc_2: off
+    light.a19_rgbw_60_01: off
+    light.b_lr_1: off
+    light.b_lr_2: off
+
+#  Turn off all the first floor lights.
+- name: All 1st Floor Lights Off
+  entities:
+    light.u_fp_1: off
+    light.u_lr_1: off
+    light.u_k_1: off
+    light.u_krc_1: off
+    light.u_krc_2: off
+    light.a19_rgbw_60_01: off
+
+#  Turn off all the basement lights.
+- name: All Basement Lights Off
+  entities:
+    #light.laundry_room: off
+    light.b_lr_1: off
+    light.b_lr_2: off
+
+- name: Porch_On
+  light.u_fp_1: on
+
+- name: Porch_Off
+  light.u_fp_1: off
+
+#  Turn off the kitchen light.
+- name: Kitchen_Off
+  entities:
+    light.u_k_1: off
+
+#  Turn on the kitchen light.
+- name: Kitchen_On
+  entities:
+    light.u_k_1: on
+
+# Tranistion on the Parents's Bedroom Lamp
+- name: Morning Bedroom
+  entities:
+    light.a19_rgbw_60_01:
+      state: on
+      transition: 45
+      brightness: 255
+
+# Vacation Scene
+- name: Vacation
+  entities:
+    light.u_lr_1:
+      state: on
+      brightness: 50
+    light.a19_rgbw_60_01:
+      state: on
+      brightness: 50
+
+#  Bathroom nightlight. Lowest brightness and red
+#  to not disturb other occupants and maintain
+#  night vision.
+#
+#- name: Nightlight
+#  entities:
+#    light.bathroom:
+#      state: on
+#      brightness: 1
+#      rgb_color: [255, 0, 0]
+
