@@ -127,7 +127,6 @@
     service: ifttt.trigger
     data: {"event":"hassnotification_jay","value1":"HASS has an update."}
 
-
 # Playbulb Candle Color
 - alias: 'Playbulb Candle Color'
   trigger:
@@ -172,7 +171,6 @@
    entity_id: 
     - light.u_fp_1
     - light.u_lr_1
-
 
 #############################
 - alias: Motion 1 On
