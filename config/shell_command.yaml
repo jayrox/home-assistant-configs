@@ -1,0 +1,9 @@
+change_bulb_color: '/home/homeassistant/.homeassistant/rgb_color.sh https://192.168.200.25 8123 HA2016 light.a19_rgbw_60_01 {{states.input_slider.parents_lamp_red.state | int}} {{states.input_slider.parents_lamp_green.state | int}} {{states.input_slider.parents_lamp_blue.state | int}} {{states.input_slider.parents_room_brightness.state | int}}'
+#  change_pb_candle_1_color: '/home/homeassistant/.homeassistant/rgb_color_ble.sh 6B:D3:4B:0B:AC:E6 set {{states.input_slider.pb_candle_1_red.state}} {{states.input_slider.pb_candle_1_green.state}} {{states.input_slider.pb_candle_1_blue.state}}'
+
+# Living Room TV Alexa Intents
+living_room_tv_mute: 'wget http://192.168.200.62/irTVmute'
+living_room_tv_power: 'wget http://192.168.200.62/irTVpwr'
+living_room_tv_vol_up: 'wget http://192.168.200.62/irTVvup'
+living_room_tv_vol_down: 'wget http://192.168.200.62/irTVvdn'
+living_room_tv_source: 'wget http://192.168.200.62/irTVsrc'
