@@ -1,7 +1,7 @@
 # Create fast CUSTOMIZE.YAML:
 Thanks - https://github.com/CCOSTAN/
 ---
-
+```
 {% for state in states.group-%}
   {%- if loop.first %}
 {% elif loop.last %}
@@ -11,3 +11,4 @@ Thanks - https://github.com/CCOSTAN/
   friendly_name: '{{ state.name }}'
   emulated_hue: {{state.attributes.emulated_hue}}
 {%- endfor -%}
+```
