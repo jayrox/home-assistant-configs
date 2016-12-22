@@ -1,5 +1,6 @@
 # Intents used on Amazon's Alexa API Config
 ----
+```
 {
   "intents": [
     {
@@ -37,3 +38,4 @@
     }
   ]
 }
+```
