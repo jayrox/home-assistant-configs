@@ -168,9 +168,6 @@ group.basement_living_room:
 group.laundry_room:
   emulated_hue: false
 
-#group.laundry_room:
-#  emulated_hue: false
-
 
 # Sensors
 sensor.xboxone_wired:
