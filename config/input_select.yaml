@@ -1,0 +1,7 @@
+# Parents Room TV Input
+parents_tv_input:
+  name: Input
+  options:
+    - Xbox One
+    - PS4
+  initial: Xbox One
