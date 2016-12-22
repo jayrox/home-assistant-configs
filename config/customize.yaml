@@ -58,10 +58,9 @@ light.b_wr_1:
 light.lamp:
   emulated_hue: false
 
-
-#light.unnamed_device:
-#  friendly_name: WHOAMI
-#  emulated_hue: false
+light.unnamed_device:
+  friendly_name: WHOAMI
+  emulated_hue: false
 
 
 # Sliders
