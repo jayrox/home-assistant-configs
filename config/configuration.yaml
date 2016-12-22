@@ -52,14 +52,18 @@ logger:
     homeassistant: info
     homeassistant.core: error
     homeassistant.components.api: error
-    homeassistant.components.emulated_hue: info
-    homeassistant.components.recorder: error
+    homeassistant.components.automation: error
     homeassistant.components.device_tracker.nmap_tracker: error
-    homeassistant.components.statsd: error
+    homeassistant.components.discovery: error
+    homeassistant.components.emulated_hue: info
     homeassistant.components.mqtt: error
-    homeassistant.components.zwave: error
+    homeassistant.components.recorder: error
     homeassistant.components.sensor.command_line: error
     homeassistant.components.sensor.google_travel_time: error
+    homeassistant.components.statsd: error
+    homeassistant.components.switch: error
+    homeassistant.components.switch.rest: error
+    homeassistant.components.zwave: error
     plexapi: error
 
 # Enables support for tracking state changes over time.
@@ -127,6 +131,7 @@ wink:
   access_token: !secret wink_access_token
 
 # Includes
+alexa: !include alexa.yaml
 automation: !include automation.yaml
 device_tracker: !include device_tracker.yaml
 group: !include groups.yaml
@@ -139,6 +144,4 @@ sensor: !include sensors.yaml
 switch: !include switches.yaml
 
 # Shell Commands
-shell_command:
-  change_bulb_color: '/home/homeassistant/.homeassistant/rgb_color.sh https://192.168.200.25 8123 HA2016 light.a19_rgbw_60_01 {{states.input_slider.parents_lamp_red.state | int}} {{states.input_slider.parents_lamp_green.state | int}} {{states.input_slider.parents_lamp_blue.state | int}} {{states.input_slider.parents_room_brightness.state | int}}'
-#  change_pb_candle_1_color: '/home/homeassistant/.homeassistant/rgb_color_ble.sh 6B:D3:4B:0B:AC:E6 set {{states.input_slider.pb_candle_1_red.state}} {{states.input_slider.pb_candle_1_green.state}} {{states.input_slider.pb_candle_1_blue.state}}'
+shell_command: !include shell_command.yaml
