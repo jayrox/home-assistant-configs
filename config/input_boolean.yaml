@@ -1,0 +1,10 @@
+# Vacation Mode
+vacation_mode:
+  name: Vacation Mode
+  initial: off
+  icon: mdi:airplane
+
+# Parents Room TV
+parents_tv_power:
+  name: Power
+  initial: off
