@@ -1,0 +1,68 @@
+intents:
+  WhereAreWeIntent:
+    speech:
+      type: plaintext
+      text: >
+        {%- if is_state('device_tracker.jay_jay_s7', 'home') and
+          is_state('device_tracker.katie_s7_wifi', 'home') -%}
+          You are both home, you silly
+        {%- else -%}
+          Jay is at {{ states("device_tracker.jay_jay_s7") }}
+          and Katie is at {{ states("device_tracker.katie_s7_wifi") }}
+        {% endif %}
+
+  LocateIntent:
+    action:
+      service: notify.notify
+      data_template:
+        message: The location of {{ User }} has been queried via Alexa.
+    speech:
+      type: plaintext
+      text: >
+        {%- for state in states.device_tracker -%}
+        {%- if state.name.lower() == User.lower() -%}
+          {{ state.name }} is at {{ state.state }}
+        {%- endif -%}
+        {%- else -%}
+          I am sorry, I do not know where {{ User }} is.
+        {%- endfor -%}
+    card:
+      type: simple
+      title: Sample title
+      content: Some more content
+
+  LivingRoomTVMuteIntent:
+    action:
+      service: shell_command.living_room_tv_mute
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  LivingRoomTVPowerIntent:
+    action:
+      service: shell_command.living_room_tv_power
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  LivingRoomTVVolUpIntent:
+    action:
+      service: shell_command.living_room_tv_vol_up
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  LivingRoomTVVolDownIntent:
+    action:
+      service: shell_command.living_room_tv_vol_down
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  LivingRoomTVSourceIntent:
+    action:
+      service: shell_command.living_room_tv_source
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
