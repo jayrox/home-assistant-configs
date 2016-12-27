@@ -7,3 +7,10 @@ living_room_tv_power: 'wget http://192.168.200.62/irTVpwr'
 living_room_tv_vol_up: 'wget http://192.168.200.62/irTVvup'
 living_room_tv_vol_down: 'wget http://192.168.200.62/irTVvdn'
 living_room_tv_source: 'wget http://192.168.200.62/irTVsrc'
+
+# Bed Room TV Alexa Intents
+bed_room_tv_mute: 'wget http://192.168.200.20/irTVmute'
+bed_room_tv_power: 'wget http://192.168.200.20/irTVpwr'
+bed_room_tv_vol_up: 'wget http://192.168.200.20/irTVvup'
+bed_room_tv_vol_down: 'wget http://192.168.200.20/irTVvdn'
+bed_room_tv_source: 'wget http://192.168.200.20/irTVsrc'
