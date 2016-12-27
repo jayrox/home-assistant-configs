@@ -30,7 +30,8 @@ intents:
       type: simple
       title: Sample title
       content: Some more content
-
+  
+  # Living Room TV Intents
   LivingRoomTVMuteIntent:
     action:
       service: shell_command.living_room_tv_mute
@@ -62,6 +63,42 @@ intents:
   LivingRoomTVSourceIntent:
     action:
       service: shell_command.living_room_tv_source
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  #Bed Room TV Intents
+  BedRoomTVMuteIntent:
+    action:
+      service: shell_command.bed_room_tv_mute
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  BedRoomTVPowerIntent:
+    action:
+      service: shell_command.bed_room_tv_power
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  BedRoomTVVolUpIntent:
+    action:
+      service: shell_command.bed_room_tv_vol_up
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  BedRoomTVVolDownIntent:
+    action:
+      service: shell_command.bed_room_tv_vol_down
+    speech:
+      type: plaintext
+      text: !include alexa_confirm.yaml
+
+  BedRoomTVSourceIntent:
+    action:
+      service: shell_command.bed_room_tv_source
     speech:
       type: plaintext
       text: !include alexa_confirm.yaml
