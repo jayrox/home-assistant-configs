@@ -1,3 +1,9 @@
-platform: tplink
-host: 192.168.200.26
-name: Fan
+- platform: tplink
+  host: 192.168.200.26
+  name: Fan
+
+- platform: rest
+  resource: http://192.168.200.135:80/irTVvbest
+  name: "Living Room TV Volume"
+  body_on: "volup"
+  body_off: "voldn"
